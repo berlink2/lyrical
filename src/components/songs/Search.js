@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import axios from 'axios';
 import { GlobalContext} from '../../context';
 
@@ -13,19 +13,23 @@ export const Search = () => {
         setUserInput(event.target.value);
 
     }
+    useEffect(()=>{
+        
+        const fetchData = async () => {
 
-    const fetchData = async () => {
+            const res = await axios(`https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_track=${songTitle}&page_size=10&page=1&s_track_rating=desc&apikey=${process.env.REACT_APP_MM_KEY}`);
+            let song_list = res.data.message.body.track_list;
+            setState({song_list: song_list, heading: "Your search Results" });
+        }
+        fetchData();
 
-        const res = await axios(`https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_track=${songTitle}&page_size=10&page=1&s_track_rating=desc&apikey=${process.env.REACT_APP_MM_KEY}`);
-        let song_list = res.data.message.body.track_list;
-        setState({song_list: song_list, heading: "Your search Results" });
-    }
+
+    },[songTitle])
 
     const handleSubmit =  (event) => {
-        
-        setSongTitle(userInput)
-        fetchData();
         event.preventDefault();
+        setSongTitle(userInput)
+        
     }
 
     return (
