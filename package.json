@@ -37,7 +37,7 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://berlink2.github.io/lyrical/",
+  "homepage": "https://berlink2.github.io/lyrical",
   "devDependencies": {
     "gh-pages": "^2.2.0"
   }
