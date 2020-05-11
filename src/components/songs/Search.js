@@ -44,7 +44,7 @@ export const Search = () => {
                                 <div className="form-group">
                                 <input onChange={handleChange} type="text" className="form-control form-control-lg" placeholder="Song name..." name="songTitle" value={state.songTitle}/>
                                 </div>
-                                <button type="submit" className="btn btn-outline-primary btn-lg mb-5 btn-block">Get Lyrical</button>
+                                <button type="submit" className="btn btn-outline-primary btn-lg mb-5 btn-block">Get Lyrics</button>
                             </form>
                         </div>
                 
